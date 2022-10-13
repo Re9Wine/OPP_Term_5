@@ -14,6 +14,7 @@ private:
 public:
 	Pet(string kind, string name);
 	Pet();
+	~Pet();
 	void setKind(string kind);
 	void setName(string name);
 	void setHealth(double health);
@@ -23,4 +24,6 @@ public:
 	double getHealth();
 	double getStaiety();
 	void feed(double food);
+	void play();
+	void state();
 };

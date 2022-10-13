@@ -8,12 +8,16 @@ Pet::Pet(string kind, string name)
 {
 	this->kind = kind;
 	this->name = name;
-	health = 100;
+	health = 10;
 	satiety = 100;
 }
 
 Pet::Pet() : Pet("Dog", "Leo")
 {
+}
+
+Pet::~Pet() {
+	cout << getName() << " is dead" << endl;
 }
 
 void Pet::setKind(string kind) {
@@ -35,11 +39,13 @@ void Pet::setName(string name) {
 }
 
 void Pet::setHealth(double health) {
-	if (health < 0) {
-		throw "Health cannot be negative";
+	if (health <= 0) {
+		delete this;
 	}
 	else if (health > 100) {
-		throw "Health cannot be more than 100%";
+		this->health = 100;
+
+		throw getName() + "is healthy";
 	}
 	else {
 		this->health = health;
@@ -47,11 +53,14 @@ void Pet::setHealth(double health) {
 }
 
 void Pet::setStaiety(double satiety) {
-	if (satiety > 0) {
-		throw "Satiety cannot be negative";
+	if (satiety <= 0) {
+		throw getName() + "is hungry";
+		setStaiety(0);
 	}
 	else if (satiety > 100) {
-		throw "Satiety cannot be more than 100%";
+		this->satiety = 100;
+
+		throw getName() + "is full";
 	}
 	else {
 		this->satiety = satiety;
@@ -76,7 +85,31 @@ double Pet::getStaiety() {
 
 void Pet::feed(double servingSize)
 {
-	setStaiety(servingSize * 0.1);
+	setStaiety(servingSize * 0.1 + getStaiety());
 
 	cout << "You conquered " << getName() << ". His satiety = " << getStaiety() << endl;
+}
+
+void Pet::play() {
+	bool wasSuccess = rand() % 2;
+
+	if (wasSuccess) {
+		cout << "You played well with " << getName() << endl;
+
+		setHealth(getHealth() + 5);
+	}
+	else {
+		cout << getName() << " got hurt while playing" << endl;
+
+		setHealth(getHealth() - 4);
+	}
+
+	setStaiety(getStaiety() - 7);
+}
+
+void Pet::state() {
+	cout << "Pet kind: " << getKind() << "\n"
+		<< "Name: " << getName() << "\n"
+		<< "Staiety: " << getStaiety() << "%" << "\n"
+		<< "Health: " << getHealth() << "%" << endl;
 }
