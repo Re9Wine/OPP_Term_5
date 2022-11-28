@@ -5,7 +5,7 @@ using namespace std;
 
 class Pet
 {
-private:
+protected:
 	string kind;
 	string name;
 	double health;
@@ -15,15 +15,12 @@ public:
 	Pet(string kind, string name);
 	Pet();
 	~Pet();
-	void setKind(string kind);
 	void setName(string name);
-	void setHealth(double health);
-	void setStaiety(double satiety);
-	string getKind();
-	string getName();
-	double getHealth();
-	double getStaiety();
-	void feed(double food);
-	void play();
+	string getKind() const;
+	string getName() const;
+	double getHealth() const;
+	double getSatiety() const;
+	virtual void feed(double food) = 0;
+	virtual void play() = 0;
 	void state();
 };

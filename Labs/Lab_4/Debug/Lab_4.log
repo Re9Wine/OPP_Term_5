@@ -1,2 +1,5 @@
-﻿  Pet.cpp
-  Lab_4.vcxproj -> E:\Study\Term 5\OOP\OPP_Term_5\Labs\Debug\Lab_4.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: промежуточный каталог (Debug\) содержит файлы, которые используются совместно с другим проектом (Lab_4.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  Lab_7.cpp
+E:\Study\Term 5\OOP\OPP_Term_5\Labs\Lab_4\Lab_7.cpp(9,13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\Study\Term 5\OOP\OPP_Term_5\Labs\Lab_4\Lab_7.cpp(15,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Lab_4.vcxproj -> E:\Study\Term 5\OOP\OPP_Term_5\Labs\Debug\Lab_7.exe
