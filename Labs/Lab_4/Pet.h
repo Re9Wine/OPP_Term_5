@@ -1,6 +1,7 @@
 using namespace std;
 
 #pragma once
+#include <iostream>
 #include <string>
 
 class Pet
@@ -19,11 +20,11 @@ public:
 	void setName(string name);
 	void setHealth(double health);
 	void setStaiety(double satiety);
-	string getKind();
-	string getName();
-	double getHealth();
-	double getStaiety();
+	string getKind() const;
+	string getName() const;
+	double getHealth() const;
+	double getStaiety() const;
 	void feed(double food);
 	void play();
-	void state();
+	friend ostream& operator << (ostream& out, const Pet& pet);
 };

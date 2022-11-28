@@ -8,7 +8,7 @@ Pet::Pet(string kind, string name)
 {
 	this->kind = kind;
 	this->name = name;
-	health = 10;
+	health = 50;
 	satiety = 100;
 }
 
@@ -17,7 +17,7 @@ Pet::Pet() : Pet("Dog", "Leo")
 }
 
 Pet::~Pet() {
-	cout << getName() << " is dead" << endl;
+	cout << getName() << " is dead\n" << endl;
 }
 
 void Pet::setKind(string kind) {
@@ -67,21 +67,13 @@ void Pet::setStaiety(double satiety) {
 	}
 }
 
-string Pet::getKind() {
-	return this->kind;
-}
+string Pet::getKind() const { return this->kind; }
 
-string Pet::getName() {
-	return this->name;
-}
+string Pet::getName() const { return this->name; }
 
-double Pet::getHealth() {
-	return this->health;
-}
+double Pet::getHealth() const { return this->health; }
 
-double Pet::getStaiety() {
-	return this->satiety;
-}
+double Pet::getStaiety() const { return this->satiety; }
 
 void Pet::feed(double servingSize)
 {
@@ -107,9 +99,12 @@ void Pet::play() {
 	setStaiety(getStaiety() - 7);
 }
 
-void Pet::state() {
-	cout << "Pet kind: " << getKind() << "\n"
-		<< "Name: " << getName() << "\n"
-		<< "Staiety: " << getStaiety() << "%" << "\n"
-		<< "Health: " << getHealth() << "%" << endl;
+ostream& operator<<(ostream& out, const Pet& pet)
+{
+	out << "Pet kind: " << pet.getKind() << "\n"
+		<< "Name: " << pet.getName() << "\n"
+		<< "Staiety: " << pet.getStaiety() << "%" << "\n"
+		<< "Health: " << pet.getHealth() << "%" << endl;
+
+	return out;
 }
