@@ -17,7 +17,7 @@ public:
 	}
 
 	void show(){
-		D1::B1::show();
+		//D1::B1::show()
 		D1::B2::show();
 		D3::show();
 
